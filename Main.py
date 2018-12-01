@@ -1,11 +1,12 @@
 import numpy as np
 import pandas as pd
 import random as rand
+from tqdm import tqdm
 
 def manhattan_distance(comparison, k):
     temp=0.0
     for iter in range(0, 7):
-        temp = temp + np.absolute(raw_data.loc[comparison][:].values.tolist()[iter] - centroid_point.loc[k][:].values.tolist()[iter])
+        temp = temp + np.absolute(raw_data.loc[comparison,:].values.tolist()[iter] - centroid_point.loc[k,:].values.tolist()[iter])
     return temp        
 
 fname='dataset.txt'
@@ -37,7 +38,7 @@ for properties in raw_data.columns.tolist():
 """
 Algorithm Begins
 """
-for iteration in range(0,50): #iteration to gain optimum value
+for iteration in tqdm(range(0,50)): #iteration to gain optimum value
     for j in range(0,210):
         thisdict = {0:66,1:66,2:66}
         for i in range(0, centroid):
